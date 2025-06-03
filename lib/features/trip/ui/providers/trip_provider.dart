@@ -55,19 +55,27 @@ class TripListNotifier extends StateNotifier<List<Trip>> {
   final AddTrip _addTrip;
   final DeleteTrip _deleteTrip;
 
-  TripListNotifier(this._getTrips, this._addTrip, this._deleteTrip) : super([]);
+  TripListNotifier(this._getTrips, this._addTrip, this._deleteTrip)
+    : super([]) {
+    // Call loadTrips() when the notifier is created to initialize the state.
+    loadTrips();
+  }
 
   Future<void> addNewTrip(Trip trip) async {
     await _addTrip(trip);
     /* equivalent to: await _addTrip.call(trip);
     because '.call' automatically gets called. */
+    // Call loadTrips() to update the state in Uni-directional Data Flow.
+    loadTrips();
   }
 
   Future<void> removeTrip(int tripId) async {
     await _deleteTrip(tripId);
+    // Call loadTrips() to update the state in Uni-directional Data Flow.
+    loadTrips();
   }
 
   Future<void> loadTrips() async {
-    await _getTrips();
+    state = await _getTrips();
   }
 }

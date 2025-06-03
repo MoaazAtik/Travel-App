@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'add_trip_screen.dart';
+
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
@@ -50,7 +52,7 @@ class MainScreen extends StatelessWidget {
       ),
       body: PageView(
         controller: _pageController,
-        children: [Text('1'), Text('2'), Text('3')],
+        children: [Text('1'), AddTripScreen(), Text('3')],
       ),
       bottomNavigationBar: ValueListenableBuilder(
         valueListenable: _currentPage,

@@ -10,11 +10,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize hive and open our box
+  /*
   // Hive.initFlutter((await getApplicationDocumentsDirectory()).path);
-  /* The line above doesn't work for web because Path Provider doesn't support it. */
+  The line above doesn't work on browser
+  because Path Provider Package doesn't support Web.
+  */
   Hive.initFlutter();
   Hive.registerAdapter(TripModelAdapter());
-  await Hive.openBox('trips');
+  await Hive.openBox<TripModel>('trips');
 
   runApp(ProviderScope(child: MyApp()));
 }
