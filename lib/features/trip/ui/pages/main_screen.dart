@@ -8,6 +8,8 @@ class MainScreen extends StatelessWidget {
 
   final PageController _pageController = PageController();
   final ValueNotifier<int> _currentPage = ValueNotifier<int>(0);
+  final String profilePic =
+      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,20 @@ class MainScreen extends StatelessWidget {
             ),
           ],
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.network(
+                profilePic,
+                fit: BoxFit.cover,
+                height: 60,
+                width: 60,
+              ),
+            ),
+          ),
+        ],
       ),
       body: PageView(
         controller: _pageController,
