@@ -1,16 +1,14 @@
 # travel_app
 
-A new Flutter project.
+A basic **Flutter app to track trips.**
 
-## Getting Started
+<br>
 
-This project is a starting point for a Flutter application.
+It covers:<br>
+✔️ State management with the **Riverpod** package.<br>
+✔️ Clean Architecture by Domain-Driven Development (**DDD**).<br>
+✔️ Local storage with the **Hive** package.
 
-A few resources to get you started if this is your first Flutter project:
+<br>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This app was mostly built as part of the _Riverpod, Clean Architecture, Hive - Flutter Travel App_ [tutorial](https://youtu.be/fT-eOgl_jhk) by Flutter Guys YouTube [channel](https://www.youtube.com/@flutterguys).

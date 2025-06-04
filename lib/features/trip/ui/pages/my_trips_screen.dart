@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/constants.dart';
 import '../providers/trip_provider.dart';
 import '../widgets/custom_search_bar.dart';
 import '../widgets/travel_card.dart';
@@ -12,6 +13,13 @@ class MyTripsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tripList = ref.watch(tripListNotifierProvider);
+
+    addTripMocks = true;
+    if (addTripMocks && tripList.isEmpty) {
+      for (final trip in tripMocks) {
+        ref.read(tripListNotifierProvider.notifier).addNewTrip(trip);
+      }
+    }
 
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(), // for mobile
