@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomSearchBar extends StatelessWidget {
+import '../providers/trip_provider.dart';
+
+class CustomSearchBar extends ConsumerWidget {
   CustomSearchBar({super.key});
 
   final TextEditingController _controller = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16),
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -34,6 +37,15 @@ class CustomSearchBar extends StatelessWidget {
                 border: InputBorder.none,
               ),
             ),
+          ),
+          IconButton(
+            onPressed: () {
+              ref
+                  .read(tripListNotifierProvider.notifier)
+                  .searchTrips(_controller.text);
+            },
+            icon: Icon(Icons.send),
+            color: Colors.grey,
           ),
         ],
       ),

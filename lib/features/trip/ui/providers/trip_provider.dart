@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -77,5 +79,18 @@ class TripListNotifier extends StateNotifier<List<Trip>> {
 
   Future<void> loadTrips() async {
     state = await _getTrips();
+  }
+
+  Future<void> searchTrips(String query) async {
+    state = await _getTrips();
+    final list = state
+        .where(
+          (trip) =>
+              trip.title.toLowerCase().contains(query) ||
+              trip.location.toLowerCase().contains(query),
+        )
+        .toList();
+
+    state = list.isEmpty ? state : list;
   }
 }
