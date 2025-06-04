@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'add_trip_screen.dart';
+import 'maps_screen.dart';
 import 'my_trips_screen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -61,7 +62,7 @@ class MainScreen extends StatelessWidget {
       ),
       body: PageView(
         controller: _pageController,
-        children: [MyTripsScreen(), AddTripScreen(), Text('3')],
+        children: [MyTripsScreen(), AddTripScreen(), MapsScreen()],
       ),
       bottomNavigationBar: ValueListenableBuilder(
         valueListenable: _currentPage,
