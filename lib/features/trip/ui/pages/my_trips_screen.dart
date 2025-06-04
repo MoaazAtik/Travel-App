@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../providers/trip_provider.dart';
+import '../widgets/travel_card.dart';
 
 class MyTripsScreen extends ConsumerWidget {
   const MyTripsScreen({super.key});
@@ -14,15 +16,15 @@ class MyTripsScreen extends ConsumerWidget {
       itemCount: tripList.length,
       itemBuilder: (context, index) {
         final trip = tripList[index];
-        return ListTile(
-          title: Text(trip.title),
-          subtitle: Text(trip.description),
-          trailing: IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () {
-              ref.read(tripListNotifierProvider.notifier).removeTrip(index);
-            },
-          ),
+        return TravelCard(
+          imageUrl: trip.photos[0],
+          title: trip.title,
+          description: trip.description,
+          date: DateFormat.yMMMMd().format(trip.date),
+          location: trip.location,
+          onDelete: () {
+            ref.read(tripListNotifierProvider.notifier).removeTrip(index);
+          },
         );
       },
     );

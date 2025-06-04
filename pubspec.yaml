@@ -42,6 +42,8 @@ dependencies:
   flutter_riverpod: ^2.6.1
   # Path Provider
   path_provider: ^2.1.5
+  # Internationalization, localization, and date formatting
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
