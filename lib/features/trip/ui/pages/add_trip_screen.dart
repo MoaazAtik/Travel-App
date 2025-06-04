@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/entities/trip.dart';
 import '../providers/trip_provider.dart';
+import '../widgets/custom_text_form_field.dart';
 
 class AddTripScreen extends ConsumerWidget {
   AddTripScreen({super.key});
@@ -23,23 +24,23 @@ class AddTripScreen extends ConsumerWidget {
     return Form(
       key: _formKey,
       child: Column(
+        spacing: 20.0,
         children: [
-          TextFormField(
-            controller: _titleController,
-            decoration: InputDecoration(labelText: "Title"),
-          ),
-          TextFormField(
+          SizedBox(height: 20),
+          CustomTextFormField(controller: _titleController, labelText: "Title"),
+          CustomTextFormField(
             controller: _descController,
-            decoration: InputDecoration(labelText: "Description"),
+            labelText: "Description",
           ),
-          TextFormField(
+          CustomTextFormField(
             controller: _locationController,
-            decoration: InputDecoration(labelText: "Location"),
+            labelText: "Location",
           ),
-          TextFormField(
+          CustomTextFormField(
             controller: _pictureController,
-            decoration: InputDecoration(labelText: "Photo"),
+            labelText: "Photo",
           ),
+          SizedBox(height: 15),
           ElevatedButton(
             onPressed: () {
               pictures.add(_pictureController.text);
