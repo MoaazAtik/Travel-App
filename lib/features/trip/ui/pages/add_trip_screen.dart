@@ -23,44 +23,47 @@ class AddTripScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        spacing: 20.0,
-        children: [
-          SizedBox(height: 20),
-          CustomTextFormField(controller: _titleController, labelText: "Title"),
-          CustomTextFormField(
-            controller: _descController,
-            labelText: "Description",
-          ),
-          CustomTextFormField(
-            controller: _locationController,
-            labelText: "Location",
-          ),
-          CustomTextFormField(
-            controller: _pictureController,
-            labelText: "Photo",
-          ),
-          SizedBox(height: 15),
-          ElevatedButton(
-            onPressed: () {
-              pictures.add(_pictureController.text);
-              if (_formKey.currentState!.validate()) {
-                final newTrip = Trip(
-                  title: _titleController.text,
-                  description: _descController.text,
-                  date: DateTime.now(),
-                  location: _locationController.text,
-                  photos: pictures,
-                );
-
-                ref.read(tripListNotifierProvider.notifier).addNewTrip(newTrip);
-              }
-            },
-            child: Text("Add trip"),
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          spacing: 20.0,
+          children: [
+            SizedBox(height: 20),
+            CustomTextFormField(controller: _titleController, labelText: "Title"),
+            CustomTextFormField(
+              controller: _descController,
+              labelText: "Description",
+            ),
+            CustomTextFormField(
+              controller: _locationController,
+              labelText: "Location",
+            ),
+            CustomTextFormField(
+              controller: _pictureController,
+              labelText: "Photo",
+            ),
+            SizedBox(height: 15),
+            ElevatedButton(
+              onPressed: () {
+                pictures.add(_pictureController.text);
+                if (_formKey.currentState!.validate()) {
+                  final newTrip = Trip(
+                    title: _titleController.text,
+                    description: _descController.text,
+                    date: DateTime.now(),
+                    location: _locationController.text,
+                    photos: pictures,
+                  );
+      
+                  ref.read(tripListNotifierProvider.notifier).addNewTrip(newTrip);
+                }
+              },
+              child: Text("Add trip"),
+            ),
+            SizedBox(height: 15),
+          ],
+        ),
       ),
     );
   }
