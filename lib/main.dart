@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -10,12 +11,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize hive and open our box
-  /*
-  // Hive.initFlutter((await getApplicationDocumentsDirectory()).path);
-  The line above doesn't work on browser
-  because Path Provider Package doesn't support Web.
-  */
-  Hive.initFlutter();
+  if (kIsWeb) {
+    Hive.initFlutter();
+  } else {
+    /*
+    This line doesn't work on browser
+    because Path Provider Package doesn't support Web.
+    */
+    Hive.initFlutter((await getApplicationDocumentsDirectory()).path);
+  }
+
   Hive.registerAdapter(TripModelAdapter());
   await Hive.openBox<TripModel>('trips');
 
