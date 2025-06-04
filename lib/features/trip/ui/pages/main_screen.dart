@@ -22,7 +22,11 @@ class MainScreen extends StatelessWidget {
     // generated instead of code from tutorial (2/2):
      */
     _currentPage.addListener(() {
-      _pageController.jumpToPage(_currentPage.value);
+      _pageController.animateToPage(
+        _currentPage.value,
+        duration: Duration(milliseconds: 400),
+        curve: Curves.ease,
+      );
     });
 
     return Scaffold(
@@ -68,6 +72,9 @@ class MainScreen extends StatelessWidget {
         ],
       ),
       body: PageView(
+        onPageChanged: (index) {
+          _currentPage.value = index;
+        },
         controller: _pageController,
         children: [MyTripsScreen(), AddTripScreen(), Text('3')],
       ),
