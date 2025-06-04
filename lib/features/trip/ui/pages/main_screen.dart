@@ -13,20 +13,8 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*
-     // code from tutorial:
     _pageController.addListener(() {
       _currentPage.value = _pageController.page!.round();
-    });
-
-    // generated instead of code from tutorial (2/2):
-     */
-    _currentPage.addListener(() {
-      _pageController.animateToPage(
-        _currentPage.value,
-        duration: Duration(milliseconds: 400),
-        curve: Curves.ease,
-      );
     });
 
     return Scaffold(
@@ -72,9 +60,6 @@ class MainScreen extends StatelessWidget {
         ],
       ),
       body: PageView(
-        onPageChanged: (index) {
-          _currentPage.value = index;
-        },
         controller: _pageController,
         children: [MyTripsScreen(), AddTripScreen(), Text('3')],
       ),
@@ -88,13 +73,11 @@ class MainScreen extends StatelessWidget {
             BottomNavigationBarItem(icon: Icon(Icons.map), label: "Maps"),
           ],
           onTap: (index) {
-            /*
-            // code from tutorial:
-            // _pageController.jumpToPage(index);
-
-            // generated instead of code from tutorial (1/2):
-             */
-            _currentPage.value = index;
+            _pageController.animateToPage(
+              index,
+              duration: Duration(milliseconds: 400),
+              curve: Curves.ease,
+            );
           },
         ),
       ),
