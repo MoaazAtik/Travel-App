@@ -1,4 +1,4 @@
-# travel_app
+# Travel App
 
 A basic **Flutter app to track trips.**
 
@@ -11,4 +11,4 @@ It covers:<br>
 
 <br>
 
-This app was mostly built as part of the _Riverpod, Clean Architecture, Hive - Flutter Travel App_ [tutorial](https://youtu.be/fT-eOgl_jhk) by Flutter Guys YouTube [channel](https://www.youtube.com/@flutterguys).
+💡 This app was mostly built as part of the _Riverpod, Clean Architecture, Hive - Flutter Travel App_ [tutorial](https://youtu.be/fT-eOgl_jhk) by Flutter Guys YouTube [channel](https://www.youtube.com/@flutterguys).
